@@ -50,7 +50,7 @@ public class FuncionarioController {
 		return funcionarioRepository.save(funcionario);
 	}
 
-	@PutMapping("/id")
+	@PutMapping("/{id}")
 	public ResponseEntity<Funcionario> atualizar(@PathVariable Long id, @Valid @RequestBody Funcionario funcionario) {
 		boolean funcionarioExists = funcionarioRepository.existsById(id);
 		if (funcionarioExists) {
@@ -62,7 +62,7 @@ public class FuncionarioController {
 	}
 
 	
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deletar(@PathVariable Long id){
 		boolean funcionarioExists = funcionarioRepository.existsById(id);
 		if (funcionarioExists) {
