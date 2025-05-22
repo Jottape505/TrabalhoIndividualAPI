@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
@@ -17,6 +18,7 @@ public class Funcionario {
 	private Long id;
 	
 	@Column
+	@NotBlank(message = "Nome é obrigatorio!")
 	private String nome;
 	
 	@Embedded
