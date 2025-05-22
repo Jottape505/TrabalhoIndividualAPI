@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.serratec.trabalho.trabalhoIndividual.domain.Funcionario;
 import org.serratec.trabalho.trabalhoIndividual.repository.FuncionarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/funcionarios")
 public class FuncionarioController {
 
+	@Autowired
 	 private final FuncionarioRepository funcionarioRepository;
 
 	    public FuncionarioController(FuncionarioRepository funcionarioRepository) {
@@ -46,8 +48,10 @@ public class FuncionarioController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Funcionario inserir(@Valid @RequestBody Funcionario funcionario) {
-		return funcionarioRepository.save(funcionario);
+	public ResponseEntity<Funcionario> criar(@RequestBody @Valid Funcionario funcionario) {
+	    System.out.println("Endereço recebido: " + funcionario.getEndereco());
+	    Funcionario salvo = funcionarioRepository.save(funcionario);
+	    return ResponseEntity.ok(salvo);
 	}
 
 	@PutMapping("/{id}")
