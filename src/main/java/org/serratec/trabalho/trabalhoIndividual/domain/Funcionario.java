@@ -1,6 +1,7 @@
 package org.serratec.trabalho.trabalhoIndividual.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,9 @@ public class Funcionario {
 	
 	@Column
 	private String nome;
+	
+	@Embedded
+	private Endereco endereco;
 
 	public Long getId() {
 		return id;
